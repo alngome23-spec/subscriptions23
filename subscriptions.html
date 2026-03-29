@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>كشف اشتراكات المغتربين 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0f1e;
+  --bg2: #111827;
+  --bg3: #1a2236;
+  --card: #141e33;
+  --border: #1e2d4a;
+  --gold: #f5c842;
+  --gold2: #e0a800;
+  --blue: #3b82f6;
+  --green: #10b981;
+  --red: #ef4444;
+  --orange: #f97316;
+  --text: #e8eaf0;
+  --text2: #8fa0bc;
+  --text3: #4a607e;
+  --radius: 14px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Tajawal', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  direction: rtl;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #0d1b3e 0%, #1a2952 50%, #0d1b3e 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 18px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.header-icon {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  border-radius: 12px;
+  display: flex;align-items:center;justify-content:center;
+  font-size: 22px;
+  box-shadow: 0 4px 12px rgba(245,200,66,0.3);
+}
+.header-title { font-size: 1.2rem; font-weight: 800; }
+.header-sub { font-size: 0.8rem; color: var(--gold); font-weight: 500; margin-top: 2px; }
+.header-account {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 16px;
+  text-align: center;
+}
+.account-label { font-size: 0.72rem; color: var(--text2); }
+.account-name { font-size: 0.92rem; font-weight: 700; color: var(--gold); }
+.account-num { font-size: 0.78rem; color: var(--text2); letter-spacing: 1px; }
+
+/* MAIN */
+.main { padding: 24px 28px; max-width: 1400px; margin: 0 auto; }
+
+/* STATS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+.stat-card:hover { transform: translateY(-2px); }
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 4px; height: 100%;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.stat-card.gold::before { background: var(--gold); }
+.stat-card.blue::before { background: var(--blue); }
+.stat-card.green::before { background: var(--green); }
+.stat-card.orange::before { background: var(--orange); }
+.stat-icon { font-size: 2rem; margin-bottom: 8px; }
+.stat-value { font-size: 1.8rem; font-weight: 800; line-height: 1; }
+.stat-value.gold { color: var(--gold); }
+.stat-value.blue { color: var(--blue); }
+.stat-value.green { color: var(--green); }
+.stat-value.orange { color: var(--orange); }
+.stat-label { font-size: 0.82rem; color: var(--text2); margin-top: 6px; font-weight: 500; }
+
+/* TOOLBAR */
+.toolbar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.search-box {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0 14px;
+  gap: 10px;
+}
+.search-box input {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: 'Tajawal', sans-serif;
+  font-size: 0.92rem;
+  padding: 11px 0;
+  width: 100%;
+  direction: rtl;
+}
+.search-box input::placeholder { color: var(--text3); }
+.search-icon { color: var(--text3); font-size: 1rem; }
+
+.filter-select {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'Tajawal', sans-serif;
+  font-size: 0.88rem;
+  padding: 11px 14px;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  direction: rtl;
+}
+
+.btn {
+  display: flex; align-items: center; gap: 7px;
+  padding: 11px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.btn-primary { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #1a1200; }
+.btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn-ghost { background: var(--card); border: 1px solid var(--border); color: var(--text2); }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.btn-danger { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); color: var(--red); }
+.btn-danger:hover { background: rgba(239,68,68,0.25); }
+.btn-success { background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); color: var(--green); }
+
+/* TABLE */
+.table-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.table-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg3);
+}
+.table-title { font-size: 1rem; font-weight: 700; }
+.table-count {
+  background: rgba(245,200,66,0.15);
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(245,200,66,0.3);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+thead tr {
+  background: var(--bg3);
+  border-bottom: 2px solid var(--border);
+}
+thead th {
+  padding: 13px 16px;
+  text-align: right;
+  color: var(--text2);
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+tbody tr {
+  border-bottom: 1px solid rgba(30,45,74,0.6);
+  transition: background 0.15s;
+}
+tbody tr:hover { background: rgba(59,130,246,0.05); }
+tbody tr:last-child { border-bottom: none; }
+td {
+  padding: 13px 16px;
+  vertical-align: middle;
+}
+.seq-badge {
+  width: 28px; height: 28px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;align-items:center;justify-content:center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text2);
+}
+.sub-name { font-weight: 600; color: var(--text); }
+.amount-cell { font-weight: 800; color: var(--gold); font-size: 0.9rem; }
+.months-badges { display: flex; gap: 5px; flex-wrap: wrap; }
+.month-badge {
+  display: inline-flex;align-items:center;justify-content:center;
+  width: 26px; height: 26px;
+  border-radius: 7px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1.5px solid;
+}
+.month-badge.paid { background: rgba(16,185,129,0.15); color: var(--green); border-color: rgba(16,185,129,0.4); }
+.month-badge.unpaid { background: rgba(74,96,126,0.1); color: var(--text3); border-color: var(--border); }
+
+.status-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.status-full { background: rgba(16,185,129,0.15); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+.status-partial { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
+.status-single { background: rgba(59,130,246,0.15); color: var(--blue); border: 1px solid rgba(59,130,246,0.3); }
+
+.actions { display: flex; gap: 6px; }
+.act-btn {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg3);
+  cursor: pointer;
+  font-size: 0.85rem;
+  display:flex;align-items:center;justify-content:center;
+  transition: all 0.2s;
+  color: var(--text2);
+}
+.act-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(245,200,66,0.1); }
+.act-btn.del:hover { border-color: var(--red); color: var(--red); background: rgba(239,68,68,0.1); }
+
+/* MONTH FILTER BAR */
+.months-filter {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.mf-btn {
+  padding: 7px 14px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--card);
+  color: var(--text2);
+  font-family: 'Tajawal', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.mf-btn:hover { border-color: var(--gold); color: var(--gold); }
+.mf-btn.active { background: var(--gold); color: #1a1200; border-color: var(--gold); }
+
+/* TOTALS ROW */
+.totals-row {
+  background: var(--bg3);
+  border-top: 2px solid var(--gold);
+  padding: 14px 20px;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+.total-item { display: flex; align-items: center; gap: 8px; }
+.total-label { font-size: 0.82rem; color: var(--text2); }
+.total-value { font-weight: 800; color: var(--gold); font-size: 1rem; }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px;
+  width: 520px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  animation: modalIn 0.25s ease;
+  direction: rtl;
+}
+@keyframes modalIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.modal-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 22px; display: flex; align-items: center; gap: 10px; }
+.modal-title span { color: var(--gold); }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { margin-bottom: 16px; }
+.form-group.full { grid-column: 1/-1; }
+.form-label { font-size: 0.82rem; color: var(--text2); font-weight: 600; margin-bottom: 7px; display: block; }
+.form-input, .form-select {
+  width: 100%;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  font-family: 'Tajawal', sans-serif;
+  font-size: 0.92rem;
+  padding: 10px 14px;
+  border-radius: 10px;
+  outline: none;
+  direction: rtl;
+  transition: border-color 0.2s;
+}
+.form-input:focus, .form-select:focus { border-color: var(--gold); }
+
+/* MONTHS CHECKBOXES */
+.months-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+.month-check {
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+}
+.month-check input { display: none; }
+.month-check label {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  display: flex;align-items:center;justify-content:center;
+  font-size: 0.82rem; font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text3);
+  background: var(--bg3);
+}
+.month-check input:checked + label {
+  background: rgba(16,185,129,0.2);
+  border-color: var(--green);
+  color: var(--green);
+}
+.month-check .mname { font-size: 0.65rem; color: var(--text3); text-align: center; }
+
+.modal-actions { display: flex; gap: 10px; margin-top: 8px; justify-content: flex-start; }
+
+/* DELETE CONFIRM */
+.confirm-modal {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px;
+  width: 380px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  animation: modalIn 0.25s ease;
+  direction: rtl;
+}
+.confirm-icon { font-size: 3rem; margin-bottom: 12px; }
+.confirm-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; }
+.confirm-text { font-size: 0.88rem; color: var(--text2); margin-bottom: 22px; }
+
+/* USER MANAGEMENT PANEL */
+.users-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: none;
+  direction: rtl;
+}
+.users-panel.open { display: flex; }
+.users-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+}
+.users-drawer {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 720px;
+  max-width: 98vw;
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  animation: drawerIn 0.3s ease;
+  box-shadow: 6px 0 40px rgba(0,0,0,0.5);
+}
+@keyframes drawerIn { from { transform: translateX(-60px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+.drawer-header {
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg3);
+}
+.drawer-title { font-size: 1.1rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+.drawer-title span { color: var(--gold); }
+.drawer-close {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: none;
+  color: var(--text2);
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;align-items:center;justify-content:center;
+  transition: all 0.2s;
+}
+.drawer-close:hover { border-color: var(--red); color: var(--red); background: rgba(239,68,68,0.1); }
+.drawer-body { flex: 1; overflow-y: auto; padding: 20px 24px; }
+.drawer-footer { padding: 16px 24px; border-top: 1px solid var(--border); }
+
+/* USERS TABLE */
+.users-table-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.users-table { width: 100%; border-collapse: collapse; }
+.users-table thead tr { background: var(--bg3); border-bottom: 2px solid var(--border); }
+.users-table th { padding: 12px 14px; text-align: right; color: var(--text2); font-size: 0.8rem; font-weight: 700; }
+.users-table tbody tr { border-bottom: 1px solid rgba(30,45,74,0.5); transition: background 0.15s; }
+.users-table tbody tr:last-child { border-bottom: none; }
+.users-table tbody tr:hover { background: rgba(59,130,246,0.05); }
+.users-table td { padding: 12px 14px; vertical-align: middle; }
+
+.user-avatar {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex;align-items:center;justify-content:center;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.avatar-admin { background: rgba(245,200,66,0.2); color: var(--gold); border: 1.5px solid rgba(245,200,66,0.4); }
+.avatar-user  { background: rgba(59,130,246,0.15); color: var(--blue); border: 1.5px solid rgba(59,130,246,0.3); }
+
+.role-badge {
+  display: inline-flex;align-items:center;gap:5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.role-admin { background: rgba(245,200,66,0.12); color: var(--gold); border: 1px solid rgba(245,200,66,0.3); }
+.role-collector { background: rgba(59,130,246,0.12); color: var(--blue); border: 1px solid rgba(59,130,246,0.3); }
+.role-viewer { background: rgba(16,185,129,0.12); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+
+.perm-tag {
+  display: inline-flex;align-items:center;gap:4px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin: 2px;
+}
+.perm-yes { background: rgba(16,185,129,0.12); color: var(--green); }
+.perm-no  { background: rgba(74,96,126,0.12); color: var(--text3); }
+
+.user-status {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 6px;
+}
+.status-on  { background: var(--green); box-shadow: 0 0 6px rgba(16,185,129,0.5); }
+.status-off { background: var(--text3); }
+
+/* ADD USER FORM */
+.add-user-form {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+.form-section-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text2);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.perms-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 4px;
+}
+.perm-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.perm-toggle:hover { border-color: var(--gold); }
+.perm-toggle.active { border-color: var(--green); background: rgba(16,185,129,0.08); }
+.perm-name { font-size: 0.85rem; font-weight: 600; }
+.perm-desc { font-size: 0.72rem; color: var(--text3); margin-top: 2px; }
+.toggle-switch {
+  width: 36px; height: 20px;
+  border-radius: 10px;
+  background: var(--border);
+  position: relative;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: white;
+  top: 3px; right: 3px;
+  transition: transform 0.2s;
+}
+.perm-toggle.active .toggle-switch { background: var(--green); }
+.perm-toggle.active .toggle-switch::after { transform: translateX(-16px); }
+
+/* CHANGE PASS */
+.pass-strength {
+  height: 4px;
+  border-radius: 2px;
+  margin-top: 6px;
+  background: var(--border);
+  overflow: hidden;
+}
+.pass-strength-bar {
+  height: 100%;
+  border-radius: 2px;
+  width: 0;
+  transition: width 0.3s, background 0.3s;
+}
+
+@media print {
+  .header, .toolbar, .months-filter, .actions, .modal-overlay, .btn { display: none !important; }
+  .main { padding: 0; }
+  body { background: white; color: black; }
+  table { font-size: 11px; }
+  .amount-cell { color: #333; }
+  .stat-card { border: 1px solid #ccc; background: #f9f9f9; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .main { padding: 16px; }
+}
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .header { padding: 14px 16px; }
+  .header-account { display: none; }
+}
+
+/* LOGIN MODAL */
+.login-modal {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px 32px;
+  width: 400px;
+  max-width: 95vw;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.7);
+  animation: modalIn 0.3s ease;
+  direction: rtl;
+  text-align: center;
+}
+.login-icon {
+  width: 64px; height: 64px;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  border-radius: 18px;
+  display: flex;align-items:center;justify-content:center;
+  font-size: 2rem;
+  margin: 0 auto 18px;
+  box-shadow: 0 6px 20px rgba(245,200,66,0.35);
+}
+.login-title { font-size: 1.25rem; font-weight: 800; margin-bottom: 6px; }
+.login-sub { font-size: 0.85rem; color: var(--text2); margin-bottom: 28px; }
+.login-error {
+  background: rgba(239,68,68,0.12);
+  border: 1px solid rgba(239,68,68,0.3);
+  color: var(--red);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+  display: none;
+}
+.login-error.show { display: block; }
+.input-icon-wrap {
+  position: relative;
+  margin-bottom: 14px;
+}
+.input-icon-wrap .ico {
+  position: absolute;
+  right: 14px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: var(--text3);
+  pointer-events: none;
+}
+.input-icon-wrap input {
+  width: 100%;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  font-family: 'Tajawal', sans-serif;
+  font-size: 0.95rem;
+  padding: 12px 42px 12px 14px;
+  border-radius: 11px;
+  outline: none;
+  direction: rtl;
+  transition: border-color 0.2s;
+}
+.input-icon-wrap input:focus { border-color: var(--gold); }
+.login-btn {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: #1a1200;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  border: none;
+  border-radius: 11px;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: opacity 0.2s, transform 0.2s;
+  letter-spacing: 0.5px;
+}
+.login-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.login-attempts {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  color: var(--text3);
+}
+
+/* SESSION BAR */
+.session-bar {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  background: rgba(16,185,129,0.12);
+  border: 1px solid rgba(16,185,129,0.25);
+  border-radius: 10px;
+  padding: 7px 14px;
+}
+.session-bar.show { display: flex; }
+.session-user { font-size: 0.85rem; font-weight: 700; color: var(--green); }
+.session-role { font-size: 0.75rem; color: var(--text2); }
+.logout-btn {
+  background: rgba(239,68,68,0.15);
+  border: 1px solid rgba(239,68,68,0.3);
+  color: var(--red);
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.logout-btn:hover { background: rgba(239,68,68,0.25); }
+
+/* SCROLL */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* NOTIFICATION */
+.notif {
+  position: fixed;
+  top: 80px; left: 50%; transform: translateX(-50%);
+  background: var(--green);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.notif.show { opacity: 1; }
+
+/* MONTHLY CHART BAR */
+.monthly-chart {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 6px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+.month-col { text-align: center; }
+.month-bar-wrap {
+  height: 60px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+.month-bar {
+  width: 100%;
+  background: linear-gradient(to top, var(--gold), rgba(245,200,66,0.4));
+  border-radius: 4px 4px 0 0;
+  min-height: 3px;
+  transition: all 0.4s ease;
+}
+.month-bar:hover { background: linear-gradient(to top, var(--blue), rgba(59,130,246,0.4)); }
+.month-bar-label { font-size: 0.7rem; color: var(--text2); font-weight: 600; }
+.month-bar-val { font-size: 0.68rem; color: var(--gold); font-weight: 700; }
+.chart-title { font-size: 0.88rem; font-weight: 700; color: var(--text2); margin-bottom: 12px; grid-column: 1/-1; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-logo">
+    <div class="header-icon">🌍</div>
+    <div>
+      <div class="header-title">كشف اشتراكات المغتربين</div>
+      <div class="header-sub">إدارة الاشتراكات السنوية · 2026</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:12px;align-items:center;">
+    <div class="session-bar" id="session-bar">
+      <span>🟢</span>
+      <div>
+        <div class="session-user" id="session-username">-</div>
+        <div class="session-role" id="session-role">-</div>
+      </div>
+      <button class="logout-btn" onclick="logout()">تسجيل خروج</button>
+    </div>
+    <button class="btn btn-ghost" id="btn-users" style="display:none" onclick="openUsersPanel()">⚙️ المستخدمين</button>
+    <button class="btn btn-ghost" id="btn-price" style="display:none" onclick="openPriceModal()">💲 سعر الشهر</button>
+    <button class="btn btn-ghost" onclick="exportExcel()">📊 Excel</button>
+    <button class="btn btn-ghost" onclick="window.print()">🖨️ طباعة</button>
+    <button class="btn btn-primary" onclick="requireAuth(openAddModal)">＋ إضافة مشترك</button>
+  </div>
+  <div class="header-account">
+    <div class="account-label">حساب المحصّل</div>
+    <div class="account-name">عمر محمد عمر البهل</div>
+    <div class="account-num">#4983893</div>
+  </div>
+</div>
+
+<!-- NOTIFICATION -->
+<div class="notif" id="notif"></div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- STATS -->
+  <div class="stats-grid">
+    <div class="stat-card gold">
+      <div class="stat-icon">💰</div>
+      <div class="stat-value gold" id="stat-total">0</div>
+      <div class="stat-label">إجمالي الاشتراكات (جنيه)</div>
+    </div>
+    <div class="stat-card blue">
+      <div class="stat-icon">👥</div>
+      <div class="stat-value blue" id="stat-count">0</div>
+      <div class="stat-label">عدد المشتركين</div>
+    </div>
+    <div class="stat-card green">
+      <div class="stat-icon">📅</div>
+      <div class="stat-value green" id="stat-months">0</div>
+      <div class="stat-label">إجمالي أشهر الاشتراك</div>
+    </div>
+    <div class="stat-card orange">
+      <div class="stat-icon">📈</div>
+      <div class="stat-value orange" id="stat-avg">0</div>
+      <div class="stat-label">متوسط الاشتراك (جنيه)</div>
+    </div>
+  </div>
+
+  <!-- MONTHLY CHART -->
+  <div class="monthly-chart" id="monthly-chart">
+    <div class="chart-title">📊 توزيع الاشتراكات شهرياً (بالألف جنيه)</div>
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="البحث باسم المشترك..." oninput="renderTable()">
+    </div>
+    <select class="filter-select" id="filterMonths" onchange="renderTable()">
+      <option value="">كل الأشهر</option>
+      <option value="1">يناير</option><option value="2">فبراير</option>
+      <option value="3">مارس</option><option value="4">أبريل</option>
+      <option value="5">مايو</option><option value="6">يونيو</option>
+      <option value="7">يوليو</option><option value="8">أغسطس</option>
+      <option value="9">سبتمبر</option><option value="10">أكتوبر</option>
+      <option value="11">نوفمبر</option><option value="12">ديسمبر</option>
+    </select>
+    <select class="filter-select" id="filterStatus" onchange="renderTable()">
+      <option value="">كل الحالات</option>
+      <option value="full">سنة كاملة</option>
+      <option value="half">6 أشهر</option>
+      <option value="quarter">3 أشهر فأقل</option>
+    </select>
+    <button class="btn btn-ghost" onclick="clearSearch()">✕ مسح</button>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <div class="table-header-row">
+      <div class="table-title">📋 قائمة المشتركين</div>
+      <div class="table-count" id="shown-count">46 مشترك</div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>اسم المشترك</th>
+            <th>المبلغ (جنيه)</th>
+            <th>الأشهر المدفوعة</th>
+            <th>عدد الأشهر</th>
+            <th>الحالة</th>
+            <th>إجراءات</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+    <div class="totals-row" id="totals-row">
+      <div class="total-item">
+        <span class="total-label">المجموع:</span>
+        <span class="total-value" id="total-shown">0</span>
+      </div>
+      <div class="total-item">
+        <span class="total-label">عدد المشتركين:</span>
+        <span class="total-value" id="total-count-shown">0</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ADD/EDIT MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-title">📝 <span id="modal-title-text">إضافة مشترك جديد</span></div>
+    <input type="hidden" id="edit-id">
+    <div class="form-row">
+      <div class="form-group full">
+        <label class="form-label">اسم المشترك *</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="الاسم الكامل">
+      </div>
+      <div class="form-group">
+        <label class="form-label">الحالة</label>
+        <select class="form-select" id="inp-status">
+          <option value="active">نشط</option>
+          <option value="pending">معلق</option>
+          <option value="done">منتهي</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">قيمة الشهر (جنيه)</label>
+        <div style="background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;">
+          <span style="color:var(--text2);font-size:0.82rem;">سعر الشهر الواحد</span>
+          <span style="color:var(--gold);font-weight:800;font-size:1rem;" id="monthly-price-display">20,000</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group full">
+      <label class="form-label">اختر الأشهر المدفوعة</label>
+      <div class="months-grid" id="months-checkboxes"></div>
+    </div>
+    <!-- AUTO TOTAL -->
+    <div style="background:linear-gradient(135deg,rgba(245,200,66,0.08),rgba(245,200,66,0.04));border:1.5px solid rgba(245,200,66,0.25);border-radius:12px;padding:14px 18px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:1.4rem;">💰</span>
+        <div>
+          <div style="font-size:0.78rem;color:var(--text2);font-weight:600;">إجمالي الاشتراك</div>
+          <div style="font-size:0.72rem;color:var(--text3);" id="months-count-label">0 شهر × 20,000 جنيه</div>
+        </div>
+      </div>
+      <div style="font-size:1.6rem;font-weight:900;color:var(--gold);" id="auto-total">0</div>
+    </div>
+    <div class="form-group full">
+      <label class="form-label">ملاحظات</label>
+      <input class="form-input" type="text" id="inp-notes" placeholder="أي ملاحظات إضافية...">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="saveSubscriber()">💾 حفظ</button>
+      <button class="btn btn-ghost" onclick="closeModal()">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- DELETE CONFIRM MODAL -->
+<div class="modal-overlay" id="deleteModal">
+  <div class="confirm-modal">
+    <div class="confirm-icon">⚠️</div>
+    <div class="confirm-title">تأكيد الحذف</div>
+    <div class="confirm-text" id="delete-text">هل أنت متأكد من حذف هذا المشترك؟</div>
+    <div style="display:flex;gap:10px;justify-content:center;">
+      <button class="btn btn-danger" id="confirmDeleteBtn">حذف</button>
+      <button class="btn btn-ghost" onclick="closeDeleteModal()">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- USERS MANAGEMENT PANEL -->
+<div class="users-panel" id="usersPanel">
+  <div class="users-overlay" onclick="closeUsersPanel()"></div>
+  <div class="users-drawer">
+    <div class="drawer-header">
+      <div class="drawer-title">⚙️ إدارة <span>المستخدمين</span></div>
+      <button class="drawer-close" onclick="closeUsersPanel()">✕</button>
+    </div>
+    <div class="drawer-body">
+
+      <!-- USERS TABLE -->
+      <div class="form-section-title">👥 المستخدمون الحاليون</div>
+      <div class="users-table-wrap">
+        <table class="users-table">
+          <thead>
+            <tr>
+              <th>المستخدم</th>
+              <th>الدور</th>
+              <th>الصلاحيات</th>
+              <th>الحالة</th>
+              <th>إجراءات</th>
+            </tr>
+          </thead>
+          <tbody id="usersTableBody"></tbody>
+        </table>
+      </div>
+
+      <!-- ADD / EDIT FORM -->
+      <div class="add-user-form" id="userForm">
+        <div class="form-section-title" id="userFormTitle">➕ إضافة مستخدم جديد</div>
+        <input type="hidden" id="edit-user-idx">
+        <div class="form-row" style="margin-bottom:14px;">
+          <div class="form-group">
+            <label class="form-label">اسم المستخدم *</label>
+            <input class="form-input" type="text" id="u-username" placeholder="مثال: محمد">
+          </div>
+          <div class="form-group">
+            <label class="form-label">الدور *</label>
+            <select class="form-select" id="u-role" onchange="onRoleChange()">
+              <option value="مدير النظام">مدير النظام</option>
+              <option value="محصّل اشتراكات">محصّل اشتراكات</option>
+              <option value="مشاهد فقط">مشاهد فقط</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row" style="margin-bottom:14px;">
+          <div class="form-group">
+            <label class="form-label">كلمة المرور *</label>
+            <div class="input-icon-wrap" style="margin-bottom:0">
+              <span class="ico" id="pass-eye" onclick="togglePassVis('u-password','pass-eye')" style="cursor:pointer;pointer-events:all">👁️</span>
+              <input class="form-input" type="password" id="u-password" placeholder="كلمة المرور" oninput="checkPassStrength(this.value)" style="padding-right:42px">
+            </div>
+            <div class="pass-strength"><div class="pass-strength-bar" id="pass-bar"></div></div>
+            <div style="font-size:0.72rem;color:var(--text3);margin-top:4px;" id="pass-hint"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">تأكيد كلمة المرور *</label>
+            <input class="form-input" type="password" id="u-password2" placeholder="أعد كلمة المرور">
+          </div>
+        </div>
+
+        <!-- PERMISSIONS -->
+        <div class="form-section-title" style="margin-top:4px;">🔑 الصلاحيات</div>
+        <div class="perms-grid" id="perms-grid">
+          <div class="perm-toggle" id="perm-add" onclick="togglePerm('canAdd')">
+            <div><div class="perm-name">➕ إضافة مشترك</div><div class="perm-desc">إضافة مشتركين جدد</div></div>
+            <div class="toggle-switch"></div>
+          </div>
+          <div class="perm-toggle" id="perm-edit" onclick="togglePerm('canEdit')">
+            <div><div class="perm-name">✏️ تعديل</div><div class="perm-desc">تعديل بيانات المشتركين</div></div>
+            <div class="toggle-switch"></div>
+          </div>
+          <div class="perm-toggle" id="perm-delete" onclick="togglePerm('canDelete')">
+            <div><div class="perm-name">🗑️ حذف</div><div class="perm-desc">حذف المشتركين</div></div>
+            <div class="toggle-switch"></div>
+          </div>
+          <div class="perm-toggle" id="perm-export" onclick="togglePerm('canExport')">
+            <div><div class="perm-name">📊 تصدير</div><div class="perm-desc">تصدير البيانات</div></div>
+            <div class="toggle-switch"></div>
+          </div>
+          <div class="perm-toggle" id="perm-users" onclick="togglePerm('canManageUsers')">
+            <div><div class="perm-name">⚙️ إدارة مستخدمين</div><div class="perm-desc">إضافة وتعديل المستخدمين</div></div>
+            <div class="toggle-switch"></div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;margin-top:18px;">
+          <button class="btn btn-primary" onclick="saveUser()">💾 حفظ المستخدم</button>
+          <button class="btn btn-ghost" onclick="resetUserForm()">↺ إلغاء</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICE MODAL -->
+<div class="modal-overlay" id="priceModal">
+  <div class="modal" style="max-width:360px;">
+    <div class="modal-title">💲 <span>تعديل سعر الاشتراك الشهري</span></div>
+    <div class="form-group">
+      <label class="form-label">قيمة الشهر الواحد (جنيه) *</label>
+      <input class="form-input" type="number" id="inp-monthly-price" placeholder="مثال: 20000" style="font-size:1.1rem;font-weight:700;">
+    </div>
+    <div style="background:rgba(245,200,66,0.07);border:1px solid rgba(245,200,66,0.2);border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:0.82rem;color:var(--text2);">
+      ⚠️ تغيير السعر سيؤثر على حسابات كل المشتركين الجدد والتعديلات القادمة فقط.
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="savePriceSetting()">💾 حفظ</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('priceModal').classList.remove('open')">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="login-modal">
+    <div class="login-icon">🔐</div>
+    <div class="login-title">تسجيل الدخول</div>
+    <div class="login-sub">يرجى إدخال بياناتك للمتابعة</div>
+    <div class="login-error" id="login-error">❌ اسم المستخدم أو كلمة المرور غير صحيحة</div>
+    <div class="input-icon-wrap">
+      <span class="ico">👤</span>
+      <input type="text" id="inp-user" placeholder="اسم المستخدم" autocomplete="username">
+    </div>
+    <div class="input-icon-wrap">
+      <span class="ico">🔑</span>
+      <input type="password" id="inp-pass" placeholder="كلمة المرور" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <button class="login-btn" onclick="doLogin()">دخول ←</button>
+    <div class="login-attempts" id="login-attempts"></div>
+  </div>
+</div>
+
+<script>
+// ========== AUTH & USERS SYSTEM ==========
+let USERS = [
+  { username:'admin',   password:'admin2026', role:'مدير النظام',       active:true, canAdd:true, canEdit:true, canDelete:true, canExport:true, canManageUsers:true  },
+  { username:'محصّل',   password:'1234',      role:'محصّل اشتراكات',    active:true, canAdd:true, canEdit:true, canDelete:false, canExport:true, canManageUsers:false },
+];
+
+// current perms state for form
+let formPerms = { canAdd:false, canEdit:false, canDelete:false, canExport:false, canManageUsers:false };
+
+let session = null;
+let authCallback = null;
+let loginAttempts = 0;
+const MAX_ATTEMPTS = 5;
+
+function requireAuth(callback) {
+  if (session) { callback(); return; }
+  authCallback = callback;
+  loginAttempts = 0;
+  document.getElementById('inp-user').value = '';
+  document.getElementById('inp-pass').value = '';
+  document.getElementById('login-error').classList.remove('show');
+  document.getElementById('login-attempts').textContent = '';
+  document.getElementById('loginModal').classList.add('open');
+  setTimeout(()=>document.getElementById('inp-user').focus(), 100);
+}
+
+function doLogin() {
+  if (loginAttempts >= MAX_ATTEMPTS) return;
+  const u = document.getElementById('inp-user').value.trim();
+  const p = document.getElementById('inp-pass').value;
+  const user = USERS.find(x => x.username === u && x.password === p && x.active !== false);
+  if (user) {
+    session = user;
+    loginAttempts = 0;
+    document.getElementById('loginModal').classList.remove('open');
+    document.getElementById('session-bar').classList.add('show');
+    document.getElementById('session-username').textContent = user.username;
+    document.getElementById('session-role').textContent = user.role;
+    // show users btn only for admins
+    document.getElementById('btn-users').style.display = user.canManageUsers ? '' : 'none';
+    document.getElementById('btn-price').style.display = user.canManageUsers ? '' : 'none';
+    if (authCallback) { authCallback(); authCallback = null; }
+  } else {
+    loginAttempts++;
+    const rem = MAX_ATTEMPTS - loginAttempts;
+    document.getElementById('login-error').classList.add('show');
+    document.getElementById('inp-pass').value = '';
+    if (rem > 0) {
+      document.getElementById('login-attempts').textContent = `محاولات متبقية: ${rem}`;
+    } else {
+      document.getElementById('login-attempts').textContent = '⛔ تم تجاوز الحد الأقصى للمحاولات';
+      document.getElementById('inp-user').disabled = true;
+      document.getElementById('inp-pass').disabled = true;
+      document.querySelector('.login-btn').disabled = true;
+      setTimeout(()=>{
+        loginAttempts = 0;
+        document.getElementById('inp-user').disabled = false;
+        document.getElementById('inp-pass').disabled = false;
+        document.querySelector('.login-btn').disabled = false;
+        document.getElementById('login-attempts').textContent = '';
+      }, 30000);
+    }
+  }
+}
+
+function logout() {
+  session = null;
+  document.getElementById('session-bar').classList.remove('show');
+  document.getElementById('btn-users').style.display = 'none';
+  document.getElementById('btn-price').style.display = 'none';
+  notify('👋 تم تسجيل الخروج');
+}
+
+document.getElementById('loginModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('loginModal')) {
+    document.getElementById('loginModal').classList.remove('open');
+    authCallback = null;
+  }
+});
+
+// ========== USER MANAGEMENT ==========
+const ROLE_PRESETS = {
+  'مدير النظام':       { canAdd:true,  canEdit:true,  canDelete:true,  canExport:true,  canManageUsers:true  },
+  'محصّل اشتراكات':   { canAdd:true,  canEdit:true,  canDelete:false, canExport:true,  canManageUsers:false },
+  'مشاهد فقط':        { canAdd:false, canEdit:false, canDelete:false, canExport:false, canManageUsers:false },
+};
+const PERM_KEYS = ['canAdd','canEdit','canDelete','canExport','canManageUsers'];
+const PERM_IDS  = { canAdd:'perm-add', canEdit:'perm-edit', canDelete:'perm-delete', canExport:'perm-export', canManageUsers:'perm-users' };
+const ROLE_CLASS = { 'مدير النظام':'role-admin', 'محصّل اشتراكات':'role-collector', 'مشاهد فقط':'role-viewer' };
+
+function openUsersPanel() {
+  renderUsersTable();
+  resetUserForm();
+  document.getElementById('usersPanel').classList.add('open');
+}
+function closeUsersPanel() {
+  document.getElementById('usersPanel').classList.remove('open');
+}
+
+function renderUsersTable() {
+  const tbody = document.getElementById('usersTableBody');
+  let html = '';
+  USERS.forEach((u, idx) => {
+    const avatarClass = u.role === 'مدير النظام' ? 'avatar-admin' : 'avatar-user';
+    const initial = u.username.charAt(0);
+    const roleClass = ROLE_CLASS[u.role] || 'role-viewer';
+    const statusDot = u.active !== false
+      ? '<span class="user-status status-on"></span> نشط'
+      : '<span class="user-status status-off"></span> معطّل';
+    const isMe = session && session.username === u.username;
+    const permsHtml = PERM_KEYS.map(k => {
+      const labels = {canAdd:'إضافة',canEdit:'تعديل',canDelete:'حذف',canExport:'تصدير',canManageUsers:'مستخدمون'};
+      return `<span class="perm-tag ${u[k]?'perm-yes':'perm-no'}">${u[k]?'✓':'✗'} ${labels[k]}</span>`;
+    }).join('');
+    html += `<tr>
+      <td>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="user-avatar ${avatarClass}">${initial}</div>
+          <div>
+            <div style="font-weight:700;font-size:0.9rem;">${u.username}</div>
+            ${isMe?'<div style="font-size:0.7rem;color:var(--gold)">← أنت</div>':''}
+          </div>
+        </div>
+      </td>
+      <td><span class="role-badge ${roleClass}">${u.role}</span></td>
+      <td><div style="display:flex;flex-wrap:wrap;gap:2px;max-width:220px;">${permsHtml}</div></td>
+      <td><span style="font-size:0.82rem;color:${u.active!==false?'var(--green)':'var(--text3)'};">${statusDot}</span></td>
+      <td>
+        <div class="actions">
+          <button class="act-btn" onclick="editUser(${idx})" title="تعديل">✏️</button>
+          ${!isMe?`<button class="act-btn" onclick="toggleUserActive(${idx})" title="${u.active!==false?'تعطيل':'تفعيل'}">${u.active!==false?'🔒':'🔓'}</button>`:''}
+          ${!isMe?`<button class="act-btn del" onclick="deleteUser(${idx})" title="حذف">🗑️</button>`:''}
+        </div>
+      </td>
+    </tr>`;
+  });
+  tbody.innerHTML = html;
+}
+
+function onRoleChange() {
+  const role = document.getElementById('u-role').value;
+  const preset = ROLE_PRESETS[role] || {};
+  PERM_KEYS.forEach(k => {
+    formPerms[k] = !!preset[k];
+    const el = document.getElementById(PERM_IDS[k]);
+    if (el) el.classList.toggle('active', !!preset[k]);
+  });
+}
+
+function togglePerm(key) {
+  formPerms[key] = !formPerms[key];
+  const el = document.getElementById(PERM_IDS[key]);
+  if (el) el.classList.toggle('active', formPerms[key]);
+}
+
+function setPermsUI(perms) {
+  PERM_KEYS.forEach(k => {
+    formPerms[k] = !!perms[k];
+    const el = document.getElementById(PERM_IDS[k]);
+    if (el) el.classList.toggle('active', !!perms[k]);
+  });
+}
+
+function editUser(idx) {
+  const u = USERS[idx];
+  document.getElementById('edit-user-idx').value = idx;
+  document.getElementById('u-username').value = u.username;
+  document.getElementById('u-role').value = u.role;
+  document.getElementById('u-password').value = '';
+  document.getElementById('u-password2').value = '';
+  document.getElementById('pass-bar').style.width = '0';
+  document.getElementById('pass-hint').textContent = 'اتركها فارغة إن لم تريد تغيير كلمة المرور';
+  setPermsUI(u);
+  document.getElementById('userFormTitle').textContent = `✏️ تعديل المستخدم: ${u.username}`;
+  document.getElementById('userForm').scrollIntoView({ behavior:'smooth' });
+}
+
+function toggleUserActive(idx) {
+  USERS[idx].active = !USERS[idx].active;
+  renderUsersTable();
+  notify(USERS[idx].active ? '🔓 تم تفعيل المستخدم' : '🔒 تم تعطيل المستخدم');
+}
+
+function deleteUser(idx) {
+  const u = USERS[idx];
+  if (!confirm(`هل تريد حذف المستخدم "${u.username}"؟`)) return;
+  USERS.splice(idx, 1);
+  renderUsersTable();
+  resetUserForm();
+  notify('🗑️ تم حذف المستخدم');
+}
+
+function saveUser() {
+  const username = document.getElementById('u-username').value.trim();
+  const role = document.getElementById('u-role').value;
+  const pass = document.getElementById('u-password').value;
+  const pass2 = document.getElementById('u-password2').value;
+  const eidx = document.getElementById('edit-user-idx').value;
+  const isEdit = eidx !== '';
+  const editIdx = parseInt(eidx);
+
+  if (!username) { alert('يرجى إدخال اسم المستخدم'); return; }
+  // check duplicate username
+  const dupIdx = USERS.findIndex(u => u.username === username);
+  if (!isEdit && dupIdx >= 0) { alert('اسم المستخدم موجود مسبقاً'); return; }
+  if (isEdit && dupIdx >= 0 && dupIdx !== editIdx) { alert('اسم المستخدم موجود مسبقاً'); return; }
+
+  if (!isEdit && !pass) { alert('يرجى إدخال كلمة المرور'); return; }
+  if (pass && pass !== pass2) { alert('كلمتا المرور غير متطابقتين'); return; }
+  if (pass && pass.length < 4) { alert('كلمة المرور قصيرة جداً (4 أحرف على الأقل)'); return; }
+
+  const perms = {};
+  PERM_KEYS.forEach(k => perms[k] = !!formPerms[k]);
+
+  if (isEdit) {
+    const existing = USERS[editIdx];
+    USERS[editIdx] = { ...existing, username, role, ...perms };
+    if (pass) USERS[editIdx].password = pass;
+    if (session && session.username === existing.username) {
+      session = USERS[editIdx];
+      document.getElementById('session-username').textContent = username;
+      document.getElementById('session-role').textContent = role;
+    }
+    notify('✅ تم تحديث بيانات المستخدم');
+  } else {
+    USERS.push({ username, password: pass, role, active: true, ...perms });
+    notify('✅ تم إضافة المستخدم بنجاح');
+  }
+  resetUserForm();
+  renderUsersTable();
+}
+
+function resetUserForm() {
+  document.getElementById('edit-user-idx').value = '';
+  document.getElementById('u-username').value = '';
+  document.getElementById('u-role').value = 'محصّل اشتراكات';
+  document.getElementById('u-password').value = '';
+  document.getElementById('u-password2').value = '';
+  document.getElementById('pass-bar').style.width = '0';
+  document.getElementById('pass-hint').textContent = '';
+  document.getElementById('userFormTitle').textContent = '➕ إضافة مستخدم جديد';
+  onRoleChange();
+}
+
+function checkPassStrength(val) {
+  let score = 0;
+  if (val.length >= 6) score++;
+  if (val.length >= 10) score++;
+  if (/[A-Z]/.test(val) || /[a-z]/.test(val)) score++;
+  if (/[0-9]/.test(val)) score++;
+  if (/[^A-Za-z0-9]/.test(val)) score++;
+  const bar = document.getElementById('pass-bar');
+  const hint = document.getElementById('pass-hint');
+  const levels = ['','ضعيفة جداً','ضعيفة','متوسطة','قوية','قوية جداً'];
+  const colors = ['','#ef4444','#f97316','#f59e0b','#10b981','#3b82f6'];
+  bar.style.width = (score*20)+'%';
+  bar.style.background = colors[score]||'';
+  hint.textContent = score>0 ? `قوة كلمة المرور: ${levels[score]}` : '';
+  hint.style.color = colors[score]||'';
+}
+
+function togglePassVis(inputId, iconId) {
+  const inp = document.getElementById(inputId);
+  inp.type = inp.type==='password' ? 'text' : 'password';
+}
+
+// ========== MONTHLY PRICE SETTING ==========
+let MONTHLY_PRICE_SETTING = 20000;
+function openPriceModal() {
+  document.getElementById('inp-monthly-price').value = MONTHLY_PRICE_SETTING;
+  document.getElementById('priceModal').classList.add('open');
+}
+function savePriceSetting() {
+  const v = parseInt(document.getElementById('inp-monthly-price').value);
+  if (!v || v <= 0) { alert('يرجى إدخال قيمة صحيحة'); return; }
+  MONTHLY_PRICE_SETTING = v;
+  // patch the constant in the main script
+  window._MONTHLY_PRICE_OVERRIDE = v;
+  document.getElementById('priceModal').classList.remove('open');
+  notify(`✅ تم تعديل سعر الشهر إلى ${v.toLocaleString()} جنيه`);
+  // refresh any open modal total
+  if (typeof updateAutoTotal === 'function') updateAutoTotal();
+}
+</script>
+
+<script>
+const MONTHS_AR = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+
+let subs = [
+  {id:1, name:'الجيلي محمد الرباع', amount:240000, months:[1,2,3,4,5,6,7,8,9,10,11,12], status:'active', notes:'١٢ شهر'},
+  {id:2, name:'التاج حاج طه مسمار', amount:240000, months:[1,2,3,4,5,6,7,8,9,10,11,12], status:'active', notes:'سنة كاملة'},
+  {id:3, name:'الصديق أحمد الصديق المدني', amount:60000, months:[3,4,5], status:'active', notes:''},
+  {id:4, name:'موسى علي موسى مهلة', amount:120000, months:[3,4,5,6,7,8], status:'active', notes:''},
+  {id:5, name:'الجيلي الحبر صباح الخير', amount:120000, months:[3,4,5,6,7,8], status:'active', notes:''},
+  {id:6, name:'علي بخيت أبو شنب', amount:20000, months:[3], status:'active', notes:''},
+  {id:7, name:'آدم بخيت أبوشنب', amount:20000, months:[3], status:'active', notes:''},
+  {id:8, name:'عز الدين أحمد علي موسى', amount:40000, months:[3,4], status:'active', notes:''},
+  {id:9, name:'غزالي محمد زين', amount:20000, months:[3], status:'active', notes:''},
+  {id:10, name:'خالد محمد الحسن', amount:60000, months:[3,4,5], status:'active', notes:''},
+  {id:11, name:'الشعراني علي الصديق', amount:40000, months:[3,4], status:'active', notes:'شهرين'},
+  {id:12, name:'الحارث عبد الرحمن ود ضهرين', amount:20000, months:[3], status:'active', notes:''},
+  {id:13, name:'محمد يوسف المسيد', amount:40000, months:[3,4], status:'active', notes:''},
+  {id:14, name:'بشير موسى سليمان', amount:120000, months:[3,4,5,6,7,8], status:'active', notes:''},
+  {id:15, name:'خليفة محمد سليمان مسمار', amount:100000, months:[3,4,5,6,7], status:'active', notes:''},
+  {id:16, name:'محمد الرفاعي عبد القادر', amount:20000, months:[3], status:'active', notes:''},
+  {id:17, name:'أنس محمد الإمام', amount:20000, months:[3], status:'active', notes:''},
+  {id:18, name:'محمد يوسف موسى الفكي', amount:40000, months:[3,4], status:'active', notes:'شهرين'},
+  {id:19, name:'عامر القاسم أحمد', amount:40000, months:[3,4], status:'active', notes:'شهرين'},
+  {id:20, name:'محمد فضل الكريم موسى بنية', amount:80000, months:[3,4,5,6], status:'active', notes:''},
+  {id:21, name:'أبو بكر محمد فضل الكريم موسى بنية', amount:80000, months:[3,4,5,6], status:'active', notes:''},
+  {id:22, name:'أسامة يوسف خليفة', amount:60000, months:[3,4,5], status:'active', notes:''},
+  {id:23, name:'ضياء الدين الصديق الخليفة', amount:120000, months:[3,4,5,6,7,8], status:'active', notes:''},
+  {id:24, name:'قصي حاج طه مسمار', amount:20000, months:[3], status:'active', notes:''},
+  {id:25, name:'مصطفى موسى أحمد', amount:60000, months:[3,4,5], status:'active', notes:''},
+  {id:26, name:'عبد الرؤوف محمد زين الحرز', amount:20000, months:[3], status:'active', notes:''},
+  {id:27, name:'الوسيلة عوض الكريم', amount:60000, months:[3,4,5], status:'active', notes:''},
+  {id:28, name:'سعد الدين محمد سليمان', amount:60000, months:[3,4,5], status:'active', notes:''},
+  {id:29, name:'موسى حاج طه محمد علي مسمار', amount:40000, months:[3,4], status:'active', notes:''},
+  {id:30, name:'محمد حاج طه محمد علي مسمار', amount:40000, months:[3,4], status:'active', notes:''},
+  {id:31, name:'سليمان موسى أم تكيك', amount:60000, months:[3,4,5], status:'active', notes:''},
+  {id:32, name:'جاسم النور إدريس', amount:20000, months:[3], status:'active', notes:''},
+  {id:33, name:'برير محمد محمد زين نايل', amount:20000, months:[3], status:'active', notes:''},
+  {id:34, name:'مصطفى عبيد حميدة', amount:40000, months:[3,4], status:'active', notes:'شهرين'},
+  {id:35, name:'عبد الله محمد علي الكباشي', amount:20000, months:[3], status:'active', notes:''},
+  {id:36, name:'مستعين مصطفى أحمد', amount:20000, months:[3], status:'active', notes:''},
+  {id:37, name:'فرح مصطفى أحمد', amount:20000, months:[3], status:'active', notes:''},
+  {id:38, name:'د.الصاوي محمد النور الخليفة', amount:60000, months:[3,4,5], status:'active', notes:''},
+  {id:39, name:'يوسف حاج طه مسمار', amount:60000, months:[3,4,5], status:'active', notes:''},
+  {id:40, name:'الطيب الصديق الخليفة', amount:80000, months:[3,4,5,6], status:'active', notes:''},
+  {id:41, name:'عبد المنعم أحمد محمد طه', amount:20000, months:[3], status:'active', notes:''},
+  {id:42, name:'سليمان أحمد محمد طه', amount:60000, months:[3,4,5], status:'active', notes:''},
+  {id:43, name:'محمد أحمد مضوي', amount:60000, months:[3,4,5], status:'active', notes:''},
+  {id:44, name:'عبد السلام بخيت', amount:20000, months:[3], status:'active', notes:''},
+  {id:45, name:'رشاد يوسف مضوي', amount:60000, months:[3,4,5], status:'active', notes:''},
+  {id:46, name:'الطيب محمد عمر', amount:40000, months:[3,4], status:'active', notes:''},
+];
+
+let nextId = 47;
+let deleteTarget = null;
+
+function getFiltered() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const fm = document.getElementById('filterMonths').value;
+  const fs = document.getElementById('filterStatus').value;
+  return subs.filter(s => {
+    if (q && !s.name.includes(q) && !s.name.toLowerCase().includes(q)) return false;
+    if (fm && !s.months.includes(parseInt(fm))) return false;
+    if (fs === 'full' && s.months.length < 12) return false;
+    if (fs === 'half' && s.months.length < 6) return false;
+    if (fs === 'quarter' && s.months.length > 3) return false;
+    return true;
+  });
+}
+
+function getStatusLabel(months) {
+  const n = months.length;
+  if (n >= 12) return '<span class="status-pill status-full">✅ سنة كاملة</span>';
+  if (n >= 6) return '<span class="status-pill status-partial">🔶 ' + n + ' أشهر</span>';
+  if (n > 1) return '<span class="status-pill status-partial">🔷 ' + n + ' أشهر</span>';
+  return '<span class="status-pill status-single">🔵 شهر واحد</span>';
+}
+
+function renderTable() {
+  const filtered = getFiltered();
+  const tbody = document.getElementById('tableBody');
+  let html = '';
+  let totalAmt = 0;
+  filtered.forEach((s, i) => {
+    totalAmt += s.amount;
+    const monthBadges = Array.from({length:12},(_,mi)=>{
+      const m = mi+1;
+      const paid = s.months.includes(m);
+      return `<span class="month-badge ${paid?'paid':'unpaid'}" title="${MONTHS_AR[mi]}">${m}</span>`;
+    }).join('');
+    html += `<tr>
+      <td><div class="seq-badge">${i+1}</div></td>
+      <td><div class="sub-name">${s.name}</div>${s.notes?`<div style="font-size:0.75rem;color:var(--text3)">${s.notes}</div>`:''}</td>
+      <td><div class="amount-cell">${s.amount.toLocaleString()}</div></td>
+      <td><div class="months-badges">${monthBadges}</div></td>
+      <td style="color:var(--text2);font-weight:700;">${s.months.length}</td>
+      <td>${getStatusLabel(s.months)}</td>
+      <td><div class="actions">
+        <button class="act-btn" onclick="requireAuth(()=>editSub(${s.id}))" title="تعديل">✏️</button>
+        <button class="act-btn del" onclick="requireAuth(()=>deleteSub(${s.id}, '${s.name.replace(/'/g,"\\'")}'))" title="حذف">🗑️</button>
+      </div></td>
+    </tr>`;
+  });
+  tbody.innerHTML = html;
+  document.getElementById('shown-count').textContent = filtered.length + ' مشترك';
+  document.getElementById('total-shown').textContent = totalAmt.toLocaleString() + ' جنيه';
+  document.getElementById('total-count-shown').textContent = filtered.length;
+  updateStats();
+  renderChart();
+}
+
+function updateStats() {
+  const total = subs.reduce((a,s)=>a+s.amount,0);
+  const months = subs.reduce((a,s)=>a+s.months.length,0);
+  const avg = Math.round(total/subs.length);
+  document.getElementById('stat-total').textContent = total.toLocaleString();
+  document.getElementById('stat-count').textContent = subs.length;
+  document.getElementById('stat-months').textContent = months;
+  document.getElementById('stat-avg').textContent = avg.toLocaleString();
+}
+
+function renderChart() {
+  const chart = document.getElementById('monthly-chart');
+  const monthly = Array(12).fill(0);
+  subs.forEach(s => s.months.forEach(m => {monthly[m-1]+=s.amount;}));
+  const maxVal = Math.max(...monthly) || 1;
+  let html = '<div class="chart-title">📊 توزيع الاشتراكات شهرياً (بالألف جنيه)</div>';
+  monthly.forEach((v,i)=>{
+    const pct = Math.round((v/maxVal)*60);
+    html += `<div class="month-col">
+      <div class="month-bar-wrap"><div class="month-bar" style="height:${pct}px" title="${MONTHS_AR[i]}: ${(v/1000).toFixed(0)}k"></div></div>
+      <div class="month-bar-label">${MONTHS_AR[i].substring(0,3)}</div>
+      <div class="month-bar-val">${v>0?(v/1000).toFixed(0)+'k':''}</div>
+    </div>`;
+  });
+  chart.innerHTML = html;
+}
+
+const MONTHLY_PRICE = 20000; // سعر الشهر الثابت - يمكن تغييره من إعدادات المدير
+
+function getMonthlyPrice() {
+  return (typeof window._MONTHLY_PRICE_OVERRIDE !== 'undefined') ? window._MONTHLY_PRICE_OVERRIDE : MONTHLY_PRICE;
+}
+
+function buildMonthsCheckboxes(selectedMonths=[]) {
+  let html = '';
+  MONTHS_AR.forEach((mn,i)=>{
+    const m = i+1;
+    const chk = selectedMonths.includes(m) ? 'checked' : '';
+    html += `<div class="month-check">
+      <input type="checkbox" id="mchk${m}" name="month" value="${m}" ${chk} onchange="updateAutoTotal()">
+      <label for="mchk${m}">${m}</label>
+      <span class="mname">${mn.substring(0,3)}</span>
+    </div>`;
+  });
+  document.getElementById('months-checkboxes').innerHTML = html;
+  updateAutoTotal();
+}
+
+function getSelectedMonths() {
+  return Array.from(document.querySelectorAll('#months-checkboxes input:checked')).map(e=>parseInt(e.value));
+}
+
+function updateAutoTotal() {
+  const months = getSelectedMonths();
+  const n = months.length;
+  const price = getMonthlyPrice();
+  const total = n * price;
+  document.getElementById('auto-total').textContent = total.toLocaleString();
+  document.getElementById('months-count-label').textContent = `${n} شهر × ${price.toLocaleString()} جنيه`;
+  document.getElementById('monthly-price-display').textContent = price.toLocaleString();
+}
+
+function openAddModal() {
+  document.getElementById('modal-title-text').textContent = 'إضافة مشترك جديد';
+  document.getElementById('edit-id').value = '';
+  document.getElementById('inp-name').value = '';
+  document.getElementById('inp-status').value = 'active';
+  document.getElementById('inp-notes').value = '';
+  buildMonthsCheckboxes([]);
+  document.getElementById('modal').classList.add('open');
+}
+
+function editSub(id) {
+  const s = subs.find(x=>x.id===id);
+  if (!s) return;
+  document.getElementById('modal-title-text').textContent = 'تعديل بيانات المشترك';
+  document.getElementById('edit-id').value = id;
+  document.getElementById('inp-name').value = s.name;
+  document.getElementById('inp-status').value = s.status;
+  document.getElementById('inp-notes').value = s.notes||'';
+  buildMonthsCheckboxes(s.months);
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+
+function saveSubscriber() {
+  const name = document.getElementById('inp-name').value.trim();
+  const status = document.getElementById('inp-status').value;
+  const notes = document.getElementById('inp-notes').value.trim();
+  const months = getSelectedMonths();
+  const amount = months.length * getMonthlyPrice();
+  if (!name) { alert('يرجى إدخال الاسم'); return; }
+  if (months.length === 0) { alert('يرجى اختيار شهر واحد على الأقل'); return; }
+  const eid = document.getElementById('edit-id').value;
+  if (eid) {
+    const idx = subs.findIndex(x=>x.id===parseInt(eid));
+    if (idx>=0) subs[idx] = {...subs[idx], name, amount, status, notes, months};
+    notify('✅ تم تحديث بيانات المشترك بنجاح');
+  } else {
+    subs.push({id:nextId++, name, amount, months, status, notes});
+    notify('✅ تم إضافة المشترك بنجاح');
+  }
+  closeModal();
+  renderTable();
+}
+
+function deleteSub(id, name) {
+  deleteTarget = id;
+  document.getElementById('delete-text').textContent = `هل أنت متأكد من حذف المشترك "${name}"؟`;
+  document.getElementById('confirmDeleteBtn').onclick = () => {
+    subs = subs.filter(s=>s.id!==deleteTarget);
+    closeDeleteModal();
+    renderTable();
+    notify('🗑️ تم حذف المشترك');
+  };
+  document.getElementById('deleteModal').classList.add('open');
+}
+
+function closeDeleteModal() {
+  document.getElementById('deleteModal').classList.remove('open');
+}
+
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('filterMonths').value = '';
+  document.getElementById('filterStatus').value = '';
+  renderTable();
+}
+
+function notify(msg) {
+  const n = document.getElementById('notif');
+  n.textContent = msg;
+  n.classList.add('show');
+  setTimeout(()=>n.classList.remove('show'), 2500);
+}
+
+function exportExcel() {
+  const rows = [['#','الاسم','المبلغ','عدد الأشهر','الأشهر','ملاحظات']];
+  subs.forEach((s,i) => {
+    rows.push([i+1, s.name, s.amount, s.months.length, s.months.map(m=>MONTHS_AR[m-1]).join(' / '), s.notes||'']);
+  });
+  const csv = '\uFEFF' + rows.map(r=>r.map(c=>`"${c}"`).join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'اشتراكات_المغتربين_2026.csv';
+  a.click();
+  notify('📊 تم تصدير البيانات');
+}
+
+// Close modals on overlay click
+document.getElementById('modal').addEventListener('click', e => { if(e.target===document.getElementById('modal')) closeModal(); });
+document.getElementById('deleteModal').addEventListener('click', e => { if(e.target===document.getElementById('deleteModal')) closeDeleteModal(); });
+
+// Init
+renderTable();
+</script>
+</body>
+</html>
